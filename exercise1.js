@@ -139,7 +139,7 @@ const groupByDepartment = PEOPLE.reduce((r, a) => {
     r[a.department] = r[a.department] || [];
     r[a.department].push(a);
     return r;
-  }, Object.create(null));
+  }, {});
 console.log(groupByDepartment);
 
 //1e
@@ -158,15 +158,15 @@ const fullPrice = (object) =>
 console.log(fullPrice(PEOPLE));
 
 //2b
-const insuranceCostByDepartment = () =>
-{
-  const payTrue = [{"HR": 0}, {"Accounting": 0}, {"HelpDesk": 0}];
-  payTrue.HR+=fullPrice(groupByDepartment.HR);
-  payTrue.Accounting+=fullPrice(groupByDepartment.Accounting);
-  payTrue.HelpDesk+=fullPrice(groupByDepartment.HelpDesk);
-  console.log(payTrue);
-};
-insuranceCostByDepartment();
+const hasInsurance = PEOPLE.filter(person => person.payInsurance);
+const usersWithInsuranceByDepartment = hasInsurance.reduce(
+  (map, user) => ({
+    ...map,
+    [user.department]: ((map[user.department] || 0)) + INSURANCE_COST,
+  }),
+  {}
+);
+console.log(usersWithInsuranceByDepartment);
 
 //2c
 const decrease = (person, cost) =>
