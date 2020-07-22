@@ -148,17 +148,20 @@ const printEmptyiban = () =>
 printEmptyiban();
 
 //2a
-const fullPrice = () =>
+const fullPrice = (object) =>
 {
-  const payTrue = PEOPLE.filter(person => person.payInsurance);
+  const payTrue = object.filter(person => person.payInsurance);
   return payTrue.length * INSURANCE_COST;
 };
-console.log(fullPrice());
+console.log(fullPrice(PEOPLE));
 
 //2b
 const insuranceCostByDepartment = () =>
 {
-  const payTrue = Object.keys(groupByDepartment).map(key => groupByDepartment.key);
+  const payTrue = [{"HR": 0}, {"Accounting": 0}, {"HelpDesk": 0}];
+  payTrue.HR+=fullPrice(groupByDepartment.HR);
+  payTrue.Accounting+=fullPrice(groupByDepartment.Accounting);
+  payTrue.HelpDesk+=fullPrice(groupByDepartment.HelpDesk);
   console.log(payTrue);
 };
 insuranceCostByDepartment();
