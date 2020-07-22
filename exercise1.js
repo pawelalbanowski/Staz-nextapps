@@ -109,11 +109,13 @@ return PEOPLE.findIndex(person => person.firstName===firstName&&person.lastName=
 }
 
 //1a
-PEOPLE[findIndexByName("Griffy", "Bothie")].departmentChange("HR");
+const index = findIndexByName("Griffy", "Bothie");
+PEOPLE[index].departmentChange("HR");
 
 //1b
 const fireEmployee = (firstName, lastName) => {
-PEOPLE.splice(findIndexByName(firstName, lastName), 1);
+  const index = findIndexByName(firstName, lastName);
+PEOPLE.splice(index, 1);
 }
 fireEmployee("Monti", "Kenealy");
 
