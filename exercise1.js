@@ -156,11 +156,12 @@ const fullPrice = () =>
 console.log(fullPrice());
 
 //2b
-const insuranceByDepartment = () => {
-const grouped = groupByDepartment;
-Object.entries().map(department => department = INSURANCE_COST*department.length);
+const insuranceCostByDepartment = () =>
+{
+  const payTrue = Object.keys(groupByDepartment).map(key => groupByDepartment.key);
+  console.log(payTrue);
 };
-console.log(insuranceByDepartment());
+insuranceCostByDepartment();
 
 //2c
 const decrease = (person, cost) =>
