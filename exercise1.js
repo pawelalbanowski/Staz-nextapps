@@ -91,14 +91,14 @@ class Person{
     this.department = newDepartment;
   }
 
-  add()
+  add(object)
   {
-    DATA.push(this);
+    object.push(this);
   }
 
   intSalary()
   {
-    this.salary=parseInt(this.salary.substring(1));
+    this.salary=+this.salary.substring(1);
   }
 }
 
@@ -131,8 +131,7 @@ addEmployee("Paweł", "Albanowski", "HelpDesk", undefined, "$2000", false);
 //1d
 const groupDepartments = () =>
 {
-  const unique = [...new Set(PEOPLE.map(item => item.department))];
-  return unique;
+   return [...new Set(PEOPLE.map(item => item.department))];
 };
 
 const groupByDepartment = PEOPLE.reduce((r, a) => {
@@ -143,17 +142,17 @@ const groupByDepartment = PEOPLE.reduce((r, a) => {
 console.log(groupByDepartment);
 
 //1e
-const printEmptyiban = () =>
+const printEmptyIban = () =>
 {
   console.log(PEOPLE.filter(person => !person.iban));
 };
-printEmptyiban();
+printEmptyIban();
 
 //2a
 const fullPrice = (object) =>
 {
-  const payTrue = object.filter(person => person.payInsurance);
-  return payTrue.length * INSURANCE_COST;
+  const peoplePaying = object.filter(person => person.payInsurance);
+  return peoplePaying.length * INSURANCE_COST;
 };
 console.log(fullPrice(PEOPLE));
 
